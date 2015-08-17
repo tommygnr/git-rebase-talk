@@ -73,11 +73,84 @@
 				</section>
 
 				<section>
+					<section>
+						<h3>We want to take the work in experiment (C4) and add it to master</h3>
+						<img src='img/basic-rebase-1.png'>
+					</section>
+					<section>
+						<h1>git merge</h1>
+						<code>git checkout master
+						git merge experiment
+						</code>
+						<img src='img/basic-rebase-2.png'>
+					</section>
+					<section>
+						<h1>git rebase</h1>
+						<code>git rebase master
+						git checkout master
+						git merge experiment</code>
+						<img src='img/basic-rebase-3.png'>
+					</section>
+				</section>
+
+				<section>
 					<h1>What is it useful for</h1>
 
+					<p>You have worked on a big feature in your own branch. Meanwhile development work has continued on master. You need to take advantage of some of that work.</p>
+
+					<code>git fetch && git rebase origin/master</code>
 				</section>
 
 			</div>
+				<section>
+					<h1>Interactive rebase</h1>
+
+					<p>Interactive rebase lets you tidy up, reorder, remove and amend commits</p>
+
+					<code>git rebase -i HEAD~5</code>
+				</section>
+
+				<section>
+					<h1>Amping up Interactive rebase</h1>
+
+					<p>Do some work/Commit/Do more work, commit/Notice a mistake in the first commit git commit --fixup=HEAD~1</p>
+
+					<code>git rebase -i --autosquash HEAD~2 </code>
+				</section>
+
+				<section>
+					<h1>Amping up Interactive rebase</h1>
+
+					<p>The following can save you a few keystrokes and is extremely safe</p>
+
+					<code>git config --global rebase.autoSquash true</code>
+				</section>
+
+				<section>
+					<h1>Amping up Interactive rebase</h1>
+
+					<p>Use the below with care: the final stash application after a successful rebase might result in non-trivial conflicts.</p>
+
+					<code>git config --global rebase.autoStash true</code>
+				</section>
+
+				<section>
+					<h1>Further reading</h1>
+
+					<p>http://pcottle.github.io/learnGitBranching/</p>
+				</section>
+
+
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+					</p>
+				</section>
+
 
 		</div>
 
