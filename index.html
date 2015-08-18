@@ -54,12 +54,11 @@
 					<ul>
 						<li>Lead Developer at <a href="https://estimateone.com">estimateone.com</a></li>
 						<li>Co-Founder of <a href="http://rostercloud.com">rostercloud.com</a></li>
-						<li>Co-organiser of this very meetup</li>
 					</ul>
 				</section>
 				<section>
 					<h1>What is git rebase</h1>
-					<h3>According to the docs:</h3>
+					<h3>According to the docs</h3>
 
 					<blockquote cite="https://git-scm.com/docs/git-rebase">
 						Forward-port local commits to the updated upstream head
@@ -69,7 +68,7 @@
 				<section>
 					<h1>What is git rebase really?</h1>
 
-					<p>Rebase is the alternative(to git merge) way to integrate changes on two branches</p>
+					<p>Rebase is the alternative (to git merge) way to integrate changes on two branches</p>
 				</section>
 
 				<section>
@@ -79,15 +78,16 @@
 					</section>
 					<section>
 						<h1>git merge</h1>
-						<code>git checkout master
+						<code>git checkout master<br>
 						git merge experiment
 						</code>
 						<img src='img/basic-rebase-2.png'>
 					</section>
 					<section>
 						<h1>git rebase</h1>
-						<code>git rebase master
-						git checkout master
+						<code>git checkout experiment<br>
+						git rebase master<br>
+						git checkout master<br>
 						git merge experiment</code>
 						<img src='img/basic-rebase-3.png'>
 					</section>
@@ -98,10 +98,10 @@
 
 					<p>You have worked on a big feature in your own branch. Meanwhile development work has continued on master. You need to take advantage of some of that work.</p>
 
-					<code>git fetch && git rebase origin/master</code>
+					<code>git fetch<br>
+						git rebase origin/master</code>
 				</section>
 
-			</div>
 				<section>
 					<h1>Interactive rebase</h1>
 
@@ -111,15 +111,33 @@
 				</section>
 
 				<section>
-					<h1>Amping up Interactive rebase</h1>
+					<h1>Interactive rebase</h1>
+					<ul>
+						<li><code>pick</code> - use the commit as is</li>
+						<li><code>reword</code> - use the commit but change the commit message</li>
+						<li><code>edit</code> - use the commit with changes</li>
+						<li><code>squash</code> - squash this commit in to the previous one</li>
+						<li><code>fixup</code> - like squash but throw away the commit message</li>
+					</ul>
+				</section>
 
-					<p>Do some work/Commit/Do more work, commit/Notice a mistake in the first commit git commit --fixup=HEAD~1</p>
+				<section>
+					<h1>Turning rebase up to 11</h1>
+					<h3>Here's a common workflow</h3>
+					<p>You do some work, commit. Do a bit more work, commit. Notice a silly mistake in the first commit. You want to fix the mistake and make it part of the first commit</p>
+					<p>
+					<code>
+						git commit -m "shiny new feature"<br>
+						git commit -m "second shiny feature"<br>
+						git commit --fixup=HEAD~1
+					</code>
+					</p>
 
 					<code>git rebase -i --autosquash HEAD~2 </code>
 				</section>
 
 				<section>
-					<h1>Amping up Interactive rebase</h1>
+					<h1>That was cool, let's make it better</h1>
 
 					<p>The following can save you a few keystrokes and is extremely safe</p>
 
@@ -127,7 +145,8 @@
 				</section>
 
 				<section>
-					<h1>Amping up Interactive rebase</h1>
+					<h1>Let's solve another annoyance</h1>
+					<h3>Git won't let you rebase with a dirty working directory</h3>
 
 					<p>Use the below with care: the final stash application after a successful rebase might result in non-trivial conflicts.</p>
 
@@ -135,30 +154,32 @@
 				</section>
 
 				<section>
-					<h1>Further reading</h1>
+					<h1>Finally: When not to rebase</h1>
 
-					<p>http://pcottle.github.io/learnGitBranching/</p>
+					<p>Never rewrite history you have shared with others!</p>
+
+					<p>Definition of shared is somewhat fuzzy. In my opinion you <em>should</em> rebase pull requests.</p>
 				</section>
-
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+					<h1>Questions</h1>
 				</section>
 
+				<section>
+					<h1>Further reading</h1>
 
+					<p>https://pcottle.github.io/learnGitBranching/</p>
+					<p>https://git-scm.com/docs/git-rebase</p>
+					<p>I will make the slides available on my <a href="https://speakerdeck.com/tommygnr">Speaker Deck</a> account and post a link to the meetup page</p>
+				</section>
+
+			</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 
 		<script>
-
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -166,6 +187,19 @@
 				progress: true,
 				history: true,
 				center: true,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+			    // when the presentation is scaled to fit different resolutions. Can be
+			    // specified using percentage units.
+			    width: 1600,
+			    height: 900,
+
+			    // Factor of the display size that should remain empty around the content
+			    margin: 0.05,
+
+			    // Bounds for smallest/largest possible scale to apply to content
+			    minScale: 0.4,
+			    maxScale: 2.5,
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
